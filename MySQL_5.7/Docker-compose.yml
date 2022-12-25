@@ -1,0 +1,21 @@
+version: '3.3'
+services:
+  database:
+    image: mysql:5.7
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'db_vortex'   
+      MYSQL_USER: 'vortex'
+      MYSQL_PASSWORD: 'P@ssword123456'      
+      MYSQL_ROOT_PASSWORD: 'P@ssword12345678'
+    ports:
+      - '23306:3306'
+    expose:
+      - '23306'
+    volumes:
+      - './.mysql-data/db:/var/lib/mysql'
+networks:
+  default:
+    name: vortex-bridge
+    external: true
