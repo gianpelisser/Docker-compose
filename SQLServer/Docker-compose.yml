@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+
+  mssql1:
+    container_name: 'mssql1'
+    image:
+      mcr.microsoft.com/mssql/server:2017-latest
+    restart: unless-stopped
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=P@ssword12345
+    ports:
+      - '1417:1433'
+    volumes:
+      - ./mssql1/sqlsystem:/var/opt/mssql/data
+      - ./mssql1/sqluser:/var/opt/mssql/sqlserver
+      - ./mssql1/sqlbackups:/var/opt/mssql/backups
+
+networks:
+  default:
+    name: vortex-bridge
+    external: true
