@@ -18,7 +18,7 @@ services:
       MYSQL_PASSWORD: vortexp4assword
       # MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     ports:
-      - 3408:3306
+      - 3306:3306
     restart: unless-stopped
     volumes:
       - './db/data:/var/lib/mysql'
